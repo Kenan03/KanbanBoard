@@ -1,0 +1,289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:align-items="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Рамка</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+        body{
+            margin: 0;
+            background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(183,75,210,1) 100%, rgba(252,70,107,1) 100%);
+        }
+        .navbar{
+            widht: 100%;
+            height: 70px;
+            margin: 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .1);
+        }
+        .navbar-brand{
+            margin-left: 550px;
+            font-weight: 700;
+            font-size: 26px;
+            text-decoration: none;
+            color: black;
+            transition: all .07s ease-in-out;
+
+        }
+        .navbar-brand:hover{
+            color: coral;
+        }
+        .callback{
+            margin-right: 10px;
+            margin-left: 10px;
+            padding: 9px 20px ;
+            background-color: coral;
+            border-radius: 50px;
+            color: #fff;
+            text-decoration: none;
+            transition: all .1s ease-in-out;
+            height: inherit;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(255, 127, 80, .2);
+        }
+        .callback:hover{
+            transform: scale(1.04);
+            color: #fff;
+            box-shadow: 0 9px 9px rgba(255, 127, 80, .5);
+
+        }
+        .call{
+            margin-right: 10px;
+            padding: 9px 20px ;
+            background-color: coral;
+            border-radius: 50px;
+            color: #fff;
+            text-decoration: none;
+            transition: all .1s ease-in-out;
+            height: inherit;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(255, 127, 80, .2);
+        }
+        .call:hover{
+            transform: scale(1.04);
+            color: #fff;
+            box-shadow: 0 9px 9px rgba(255, 127, 80, .5);
+
+        }
+        .navbar .container{
+            height: inherit;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar-menu{
+            height: inherit;
+            align-items: center;
+            list-style-type: none;
+            padding-left: 30px;
+        }
+
+        .navbar-menu li{
+            display: inline-block;
+        }
+
+        .navbar-menu li a{
+            display: inline-block;
+            color: black;
+            opacity: 0.6;
+            text-decoration: none;
+            padding: 10px;
+            transition: all .07s ease-in-out;
+        }
+        .navbar-menu li a:hover{
+            opacity: 1;
+        }
+
+        .navbar-wrap{
+            display: flex;
+            flex-flow: row nowrap;
+        }
+        div.container1 {
+            background-color: #4AAE9B;
+            font-weight: normal;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            padding: 10px;
+            left: 30%;
+        }
+
+
+        #layer1 {
+            width: 190px; /* Ширина слоя */
+            height: 100px;
+            padding: 5px; /* Поля вокруг текста */
+            background: radial-gradient(circle, rgb(116, 132, 215) 0%, rgba(183,75,210,1) 100%, rgb(217, 44, 79) 100%);
+            /*!*border: 5px dashed black;!* Параметры границы *!*!*/
+        }
+        div.example-parent{
+            display: flex;
+            padding-top: 120px;
+            padding-left: 200px;
+        }
+        div.table1 {
+            margin: 10px;
+            padding: 10px;
+            background: yellow;
+            top: 50%;
+        }
+
+        #layer2{
+            width: 200px; /* Ширина слоя */
+            min-height: 400px;
+            padding: 10px; /* Поля вокруг текста */
+            background: coral; /* Цвет фона */
+            /*border: 5px dashed black;!* Параметры границы *!*/
+        }
+        .info{
+            position: absolute;
+        }
+        .qqq{
+            width: 100%;
+            position: fixed;
+        }
+
+        .hidden-menu-ticker {
+            display: none;
+        }
+
+        .hidden-menu {
+            display: block;
+            position: fixed;
+            list-style:none;
+            padding: 10px;
+            margin: 0;
+            box-sizing: border-box;
+            width: 200px;
+            background-color: #eee;
+            height: 100%;
+            top: 0;
+            left: -200px;
+            transition: left .2s;
+            z-index: 2;
+            -webkit-transform: translateZ(0);
+            -webkit-backface-visibility: hidden;
+        }
+
+        .btn-menu {
+            color: #fff;
+            padding: 5px;
+            position: fixed;
+            left: 8px;
+            cursor: pointer;
+            transition: left .23s;
+            z-index: 3;
+            width: 25px;
+            -webkit-transform: translateZ(0);
+            -webkit-backface-visibility: hidden;
+        }
+        .btn-menu span {
+            display: block;
+            height: 5px;
+            background-color: coral;
+            margin: 5px 0 0;
+            transition: all .1s linear .23s;
+            position: relative;
+        }
+        .btn-menu span.first {
+            margin-top: 0;
+        }
+        .hidden-menu-ticker:checked ~ .btn-menu {
+            left: 160px;
+        }
+        .hidden-menu-ticker:checked ~ .hidden-menu {
+            left: 0;
+        }
+        .hidden-menu-ticker:checked ~ .btn-menu span.first {
+            -webkit-transform: rotate(45deg);
+            top: 10px;
+        }
+        .hidden-menu-ticker:checked ~ .btn-menu span.second {
+            opacity: 0;
+        }
+        .hidden-menu-ticker:checked ~ .btn-menu span.third {
+            -webkit-transform: rotate(-45deg);
+            top: -10px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="qqq">
+    <nav class="navbar">
+        <div class="container">
+
+            <input type="checkbox" id="hmt" class="hidden-menu-ticker">
+            <label class="btn-menu" for="hmt">
+                <span class="first"></span>
+                <span class="second"></span>
+                <span class="third"></span>
+            </label>
+            <ul class="hidden-menu">
+                <li style="padding-top: 50px;">
+                    <form action="/findNote" method="post">
+                        <input type="search"  name="find" placeholder="Поиск по сайту">
+                        <button type="submit" style="margin-left: 68px;"> find</button>
+                    </form>
+                </li>
+                <li>
+                    <form action="/trash" method="post">
+                        <button type="submit" style="margin-left: 64px; margin-top: 15px;">trash</button>
+                    </form>
+                </li>
+                <li style="margin-top: 15px;">
+                    <a style="margin-left: 60px;" href="/settings">Settings</a>
+                </li>
+            </ul>
+
+            <a href="#" align="center" class="navbar-brand">KanbanBoard</a>
+            <div class="navbar-wrap">
+                <ul class="navbar-menu">
+                    <li> <a href="/newTable">Add new table</a></li>
+                    <li> <a href="/newNote">Add new note</a></li>
+                </ul>
+                <a href="/logout" class="call">Logout</a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="example-parent">
+    <div th:each="el, iterStat : ${tableName1}" th:for="|el${iterStat.index}|">
+    <div
+            class="table1"
+            id="layer2"
+    >          <h style="position: absolute;" th:text="${el.getKey().getTable_name()}"/>
+        <form class="info" action="/infoTable" method="post">
+            <input type="hidden" th:value="${el.getKey().getId()}" name="deleteTable">
+            <button type="submit" style="margin-left: 174px;">X</button>
+        </form>
+
+        <hr style="margin-top: 26px">
+        <div
+                class="container1"
+                id="layer1"
+                th:each="listId : ${el.getValue()}"
+        >
+            <h th:text="${listId.getNotes_name()}"/> <p th:text="${listId.getTimeAndDate() + ' ' + listId.getTime()}"/>
+            <form class="info" action="/info" method="post">
+            <input type="hidden" th:value="${listId.getId()}" name="info">
+            <button type="submit">info</button>
+            </form>
+
+            <form align="right" action="/moveToTable" method="GET">
+                <input type="hidden" th:value="${listId.getId()}" name="id">
+                <input type="hidden" th:value="${el.getKey().getId()}" name="id1">
+                <button type="submit">-></button>
+            </form>
+
+        </div>
+
+    </div>
+    </div>
+</div>
+</body>
+</html>
+
+

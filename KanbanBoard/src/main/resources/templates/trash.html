@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(183,75,210,1) 100%, rgba(252,70,107,1) 100%);">
+<div th:each="el : ${trashes}">
+    <h th:text="${'Name: ' + el.getNotes_name()}"/> <p th:text="${'Description: ' + el.getDescription()}"/> <p th:text="${'Date&Time ready: ' + el.getTimeAndDate() + ' ' + el.getTime()}"/> <p th:text="${'Date create: ' + el.getCreateDate()}"/> <hr>
+</div>
+<div th:text="${nothing}"/>
+</body>
+</html>

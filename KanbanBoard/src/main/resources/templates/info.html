@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:Описание="http://www.w3.org/1999/xhtml"
+      xmlns:выполнения="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(183,75,210,1) 100%, rgba(252,70,107,1) 100%);">
+
+<div th:each="el : ${noteInfo}">
+    <form action="/delete" method="POST" style="position: absolute; padding-left: 1400px" >
+        <input type="hidden" th:value="${noteInfo.get().getId()}" name="idNote">
+        <input type="hidden" th:value="${noteInfo.get().getNotes_name()}" name="nameNote">
+        <input type="hidden" th:value="${noteInfo.get().getDescription()}" name="descriptionNote">
+        <input type="hidden" th:value="${noteInfo.get().getTimeAndDate()}" name="dateNote">
+        <input type="hidden" th:value="${noteInfo.get().getTableOwner().getId()}" name="idTable">
+        <input type="hidden" th:value="${noteInfo.get().getCreateDate()}" name="createDate">
+        <input type="hidden" th:value="${noteInfo.get().getTime()}" name="time">
+        <button type="submit">delete</button>
+    </form>
+    <form action="/updateNote" method="GET" style="padding-left: 1300px; position: absolute;">
+        <input type="hidden" th:value="${noteInfo.get().getId()}" name="updateNote">
+        <button type="submit">UpdateNote</button>
+    </form>
+    <a href="/auth/hello" style="position: absolute; padding-left: 1250px">Home</a>
+    Name: <h th:text="${noteInfo.get().getNotes_name()}"/> <p th:text="${'Description: ' + noteInfo.get().getDescription()}"/> <p th:text="${'Date&Time ready: ' + noteInfo.get().getTimeAndDate() + ' ' + noteInfo.get().getTime()}"/> <p th:text="${'Date create: ' + noteInfo.get().getCreateDate()}"/>  <hr>
+    <div th:each="el1 : ${comments}">
+        <p th:text="${'Comment: ' + el1.getComment()}"/>
+    </div>
+
+    <form action="/comment" method="POST">
+        <input type="text"  name="comment" placeholder="Комментарий">
+        <input type="hidden" th:value="${noteInfo.get().getId()}" name="noteId">
+        <button type="submit">Add comment</button>
+    </form>
+</div>
+
+</body>
+</html>

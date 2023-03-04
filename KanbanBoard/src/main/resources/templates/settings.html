@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(183,75,210,1) 100%, rgba(252,70,107,1) 100%);">
+<div th:each="el : ${personInfo}">
+
+  Username: <h th:text="${personInfo.getUsername()}"/> <p th:text="${'Email: ' + personInfo.getEmail()}"/> <p th:text="${'Tables:' + personInfo.getTablesList().size()}"/>  <hr>
+
+  <a href="/auth/hello">Home</a>
+</div>
+</body>
+</html>
